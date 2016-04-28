@@ -57,7 +57,7 @@ public void test()
 	   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
 	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
 	   //找到信息报送名称元素并输入内容
-	   oWebDriver.findElement(By.id("activity_name$text")).sendKeys("信息报送名称ygy003");
+	   oWebDriver.findElement(By.id("activity_name$text")).sendKeys("信息报送名称ygy004");
 	   //找到信息报送描述元素并输入内容
 	   oWebDriver.findElement(By.id("activity_desc$text")).sendKeys("信息报送描述");
 	   //找到下发表单复选框元素并单击选中
