@@ -73,8 +73,9 @@ public void test()
 	   //点击确定按钮
 	   oWebDriver.findElement(By.xpath("//div[2]/a/span")).click();
 	   //回到信息报送编辑页面
-	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
+	   oWebDriver.switchTo().defaultContent();
 	   oWebDriver.switchTo().frame("contentIframe");
+	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
 	   //选中重复上报
 	   wait.until(ExpectedConditions.presenceOfElementLocated(By.id("mini-85$check")));
 	   oWebDriver.findElement(By.id("mini-85$check")).click();
@@ -89,7 +90,7 @@ public void test()
 	   removeAttribute.executeScript("var setDate=document.getElementById(\"hdsj$text\");setDate.removeAttribute('readonly');") ;
        //向截止日期输入框赋值，这里直接赋值会因为丢失焦点无效，故先找到父节点再回来进行赋值操作
 	   oWebDriver.findElement(By.id("hdsj$text")).findElement(By.xpath("..")).click(); 
-       oWebDriver.findElement(By.id("hdsj$text")).sendKeys("2016-04-24");
+       oWebDriver.findElement(By.id("hdsj$text")).sendKeys("2016-05-24");
        //点击提交审批按钮
        oWebDriver.findElement(By.xpath("//div[2]/div/div/a[2]/span")).click();  
 }
