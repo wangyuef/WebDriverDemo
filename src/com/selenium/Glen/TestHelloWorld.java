@@ -57,7 +57,7 @@ public void test()
 	   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
 	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
 	   //找到信息报送名称元素并输入内容
-	   oWebDriver.findElement(By.id("activity_name$text")).sendKeys("信息报送名称");
+	   oWebDriver.findElement(By.id("activity_name$text")).sendKeys("信息报送名称ygy003");
 	   //找到信息报送描述元素并输入内容
 	   oWebDriver.findElement(By.id("activity_desc$text")).sendKeys("信息报送描述");
 	   //找到下发表单复选框元素并单击选中
@@ -72,7 +72,7 @@ public void test()
 	   oWebDriver.findElement(By.id("mini-17$checkcolumn$7")).click();
 	   //点击确定按钮
 	   oWebDriver.findElement(By.xpath("//div[2]/a/span")).click();
-	   //回到信息报送编辑页面
+	   //回到信息报送编辑页面，这里先回到默认的frame，然后切换到编辑管理页面，最后切换回到编辑界面
 	   oWebDriver.switchTo().defaultContent();
 	   oWebDriver.switchTo().frame("contentIframe");
 	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_add.jsp')]")));
@@ -93,6 +93,26 @@ public void test()
        oWebDriver.findElement(By.id("hdsj$text")).sendKeys("2016-05-24");
        //点击提交审批按钮
        oWebDriver.findElement(By.xpath("//div[2]/div/div/a[2]/span")).click();  
+       //回到默认frame
+       oWebDriver.switchTo().defaultContent();
+       //点击审批管理菜单
+       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='mini-6$33']/div/span[4]/span[2]")));
+	   oWebDriver.findElement(By.xpath("//div[@id='mini-6$33']/div/span[4]/span[2]")).click();
+	   //定位到审批管理页面
+	   oWebDriver.switchTo().frame("contentIframe");
+	   //点击第一条记录的审批按钮  
+	   oWebDriver.findElement(By.xpath("//td[9]/span/a")).click(); 
+	   //定位到审批页面
+	   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[contains(@src,'htmls/activity_audit.jsp')]")));
+	   oWebDriver.switchTo().frame(oWebDriver.findElement(By.xpath("//iframe[contains(@src,'htmls/activity_audit.jsp')]")));
+	   //点击审批通过按钮 
+	   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='mini-57$ck$0']")));
+	   oWebDriver.findElement(By.xpath("//input[@id='mini-57$ck$0']")).click();
+	   //点击审批不通过按钮 
+	   //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='mini-57$ck$1']")));
+	   //oWebDriver.findElement(By.xpath("//input[@id='mini-57$ck$1']")).click();
+	   //点击确定按钮
+	   oWebDriver.findElement(By.xpath("//td/a/span")).click(); 
 }
 	
 }
